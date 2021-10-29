@@ -666,7 +666,7 @@ static int resolve_indirect_refs(struct btrfs_fs_info *fs_info,
 		 * we can only tolerate ENOENT,otherwise,we should catch error
 		 * and return directly.
 		 */
-		if (err == -ENOENT) {
+		if (err == -ENOENT || err == -EIO) {
 			prelim_ref_insert(fs_info, &preftrees->direct, ref,
 					  NULL);
 			continue;
